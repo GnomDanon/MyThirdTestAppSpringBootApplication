@@ -17,6 +17,7 @@ import ru.garipov.MySecondTestAppSpringBoot.service.ModifyResponseService;
 import ru.garipov.MySecondTestAppSpringBoot.service.ValidationService;
 import ru.garipov.MySecondTestAppSpringBoot.util.DateTimeUtil;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @Slf4j
@@ -35,6 +36,12 @@ public class MyController {
 
 	@PostMapping(value = "/feedback")
 	public ResponseEntity<Response> feedback(@Valid @RequestBody Request request, BindingResult bindingResult) {
+		try {
+			log.info("time difference: {}ms", new Date().getTime() - DateTimeUtil.getCustomFormat().parse(request.getSystemTime()).getTime());
+		} catch (ParseException e) {
+			log.error(e.getMessage(), e);
+		}
+
 		log.info("request: {}", request);
 
 		Response response = Response.builder()
