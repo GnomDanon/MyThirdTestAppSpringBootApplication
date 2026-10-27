@@ -15,7 +15,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Request {
 
-	@NotBlank
+	/***
+	 * Уникальный идентификатор сообщения
+	 */
+	@NotBlank(message = "UID не может быть пустым")
 	@Size(max = 32)
 	private String uid;
 
@@ -29,13 +32,17 @@ public class Request {
 	private String systemTime;
 
 	private String source;
+	private Positions position;
+	private Double salary;
+	private Double bonus;
+	private Integer workDays;
 
 	@Min(value = 1)
 	@Max(value = 100000)
 	private int communicationId;
 
 	private int templateId;
-	private int productionCode;
+	private int productCode;
 	private int smsCode;
 
 	@Override
@@ -48,7 +55,7 @@ public class Request {
 				", source='" + source + '\'' +
 				", communicationId='" + communicationId + '\'' +
 				", templateId='" + templateId + '\'' +
-				", productionCode='" + productionCode + '\'' +
+				", productionCode='" + productCode + '\'' +
 				", smsCode='" + smsCode +
 				'}';
 	}

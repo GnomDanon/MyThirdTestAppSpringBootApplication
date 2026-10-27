@@ -10,6 +10,12 @@ public class Response {
 	private String uid;
 	private String operationUid;
 	private String systemTime;
+
+	private Positions positions;
+	private Double salary;
+	private Double bonus;
+	private Integer workDays;
+
 	private Codes code;
 	private ErrorCodes errorCode;
 	private ErrorMessages errorMessage;
